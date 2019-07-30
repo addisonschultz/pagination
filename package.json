@@ -14,7 +14,8 @@
 	},
 	"author": "Addison Schultz",
 	"dependencies": {
-		"react": "^16.8.6"
+		"react": "^16.8.6",
+		"react-flip-page": "^1.5.7"
 	},
 	"name": "@framer/addison.pagination",
 	"version": "1.12.0"
