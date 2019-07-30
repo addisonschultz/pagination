@@ -6,18 +6,20 @@ import {
   addPropertyControls,
   Override
 } from "framer";
+import FlipPage from "react-flip-page";
 
 export interface Props {
   /**
    * Master Toggle
    */
   toggle: boolean;
+  children: any;
+  width: number;
+  height: number;
 
   /**
    * Props for Page Component
    */
-  width: number;
-  height: number;
   color: string;
   leftIcon: any;
   rightIcon: any;
@@ -34,6 +36,25 @@ export interface Props {
   /**
    * Props for Flip Page Component
    */
+  orientation: "vertical" | "horizontal";
+  uncutPages: boolean;
+  animationDuration: number;
+  treshold: number;
+  maxAngle: number;
+  maskOpacity: number;
+  perspective: number;
+  pageBackground: string;
+  showHint: boolean;
+  showSwipeHint: boolean;
+  showTouchHint: boolean;
+  flipOnTouch: boolean;
+  onPageChange: () => void;
+  onStartSwiping: () => void;
+  onStopSwiping: () => void;
+  loopForever: boolean;
+  disableSwipe: boolean;
+  responsive: boolean;
+  startAt: number;
 }
 
 export class PageEffect {
@@ -44,7 +65,7 @@ export class PageEffect {
   static Wheel = "wheel";
 }
 
-export function Pagination(props) {
+export function Pagination(props: Props) {
   const { width, height } = props;
 
   const [current, setCurrent] = React.useState(0);
@@ -87,7 +108,35 @@ export function Pagination(props) {
     customTransition = { ...Custom2() };
   }
 
-  //   if (props.toggle)
+  if (props.toggle) {
+    return (
+      <FlipPage
+        height={props.responsive ? null : 812}
+        width={props.responsive ? null : 375}
+        orientation={props.orientation}
+        uncutPages={props.uncutPages}
+        animationDuration={props.animationDuration}
+        treshold={props.treshold}
+        maxAngle={props.maxAngle}
+        maskOpacity={props.maskOpacity}
+        perspective={`${props.perspective}em`}
+        pageBackground={props.pageBackground}
+        showHint={props.showHint}
+        showSwipeHint={props.showSwipeHint}
+        showTouchHint={props.showTouchHint}
+        flipOnTouch={props.flipOnTouch}
+        onPageChange={props.onPageChange}
+        onStartSwiping={props.onStartSwiping}
+        onStopSwiping={props.onStopSwiping}
+        loopForever={props.loopForever}
+        disableSwipe={props.disableSwipe}
+        responsive={props.responsive}
+        startAt={props.startAt}
+      >
+        {props.children}
+      </FlipPage>
+    );
+  }
   return (
     <div>
       <Page
@@ -182,7 +231,7 @@ export function Pagination(props) {
 }
 
 addPropertyControls(Pagination, {
-  // Items shown in property panel
+  // Pagination Property Controls
   children: {
     type: ControlType.Array,
     title: "Pages",
@@ -196,6 +245,9 @@ addPropertyControls(Pagination, {
     enabledTitle: "Flip",
     disabledTitle: "Page"
   },
+  /**
+   * Native Page Property Controls
+   */
   transition: {
     type: ControlType.Boolean,
     title: "Transition",
@@ -320,14 +372,169 @@ addPropertyControls(Pagination, {
         props.toggle === true
       );
     }
+  },
+  /**
+   * FlipPage Property Controls
+   */
+  orientation: {
+    type: ControlType.Enum,
+    title: "Orientation",
+    options: ["vertical", "horizontal"],
+    optionTitles: ["Vertical", "Horizontal"],
+    hidden(props) {
+      return props.toggle === false;
+    }
+  },
+  uncutPages: {
+    type: ControlType.Boolean,
+    title: "Uncut Pages",
+    enabledTitle: "True",
+    disabledTitle: "False",
+    hidden(props) {
+      return props.toggle === false;
+    }
+  },
+  animationDuration: {
+    type: ControlType.Number,
+    title: "Animation Duration",
+    min: 100,
+    max: 1000,
+    step: 1,
+    hidden(props) {
+      return props.toggle === false;
+    }
+  },
+  treshold: {
+    type: ControlType.Number,
+    title: "Treshold",
+    min: 5,
+    max: 90,
+    step: 1,
+    hidden(props) {
+      return props.toggle === false;
+    }
+  },
+  maxAngle: {
+    type: ControlType.Number,
+    title: "Max Angle",
+    min: 1,
+    max: 90,
+    step: 1,
+    hidden(props) {
+      return props.toggle === false;
+    }
+  },
+  maxOpacity: {
+    type: ControlType.Number,
+    title: "Mask Opacity",
+    min: 0.1,
+    max: 1,
+    step: 0.1,
+    hidden(props) {
+      return props.toggle === false;
+    }
+  },
+  perspective: {
+    type: ControlType.Number,
+    title: "Perspective",
+    min: 50,
+    max: 500,
+    step: 1,
+    hidden(props) {
+      return props.toggle === false;
+    }
+  },
+  pageBackground: {
+    type: ControlType.Color,
+    title: "Background Color",
+    hidden(props) {
+      return props.toggle === false;
+    }
+  },
+  showHint: {
+    type: ControlType.Boolean,
+    title: "Direction Hint",
+    enabledTitle: "True",
+    disabledTitle: "False",
+    hidden(props) {
+      return props.toggle === false;
+    }
+  },
+  showSwipeHint: {
+    type: ControlType.Boolean,
+    title: "Swipe Hint",
+    enabledTitle: "True",
+    disabledTitle: "False",
+    hidden(props) {
+      return props.toggle === false;
+    }
+  },
+  showTouchHint: {
+    type: ControlType.Boolean,
+    title: "Touch Hint",
+    enabledTitle: "True",
+    disabledTitle: "False",
+    hidden(props) {
+      return props.toggle === false;
+    }
+  },
+  flipOnTouch: {
+    type: ControlType.Boolean,
+    title: "Flip on Touch",
+    enabledTitle: "True",
+    disabledTitle: "False",
+    hidden(props) {
+      return props.toggle === false;
+    }
+  },
+  loopForever: {
+    type: ControlType.Boolean,
+    title: "Loop",
+    enabledTitle: "True",
+    disabledTitle: "False",
+    hidden(props) {
+      return props.toggle === false;
+    }
+  },
+  disableSwipe: {
+    type: ControlType.Boolean,
+    title: "Disable Swipe",
+    enabledTitle: "True",
+    disabledTitle: "False",
+    hidden(props) {
+      return props.toggle === false;
+    }
+  },
+  responsive: {
+    type: ControlType.Boolean,
+    title: "Responsive",
+    enabledTitle: "True",
+    disabledTitle: "False",
+    hidden(props) {
+      return props.toggle === false;
+    }
+  },
+  startAt: {
+    type: ControlType.Number,
+    title: "Start Page",
+    displayStepper: true,
+    hidden(props) {
+      return props.toggle === false;
+    }
   }
 });
 
 Pagination.defaultProps = {
+  /**
+   * Pagination Default Props
+   */
   ...Frame.defaultProps,
   toggle: false,
   width: 375,
   height: 812,
+  /**
+   * Native Page Default Props
+   */
   enum: PageEffect.None,
   color: "#fff",
   leftIcon: null,
@@ -339,7 +546,26 @@ Pagination.defaultProps = {
   carousel: true,
   dragEnabled: false,
   transition: true,
-  custom: "Custom1"
+  custom: "Custom1",
+  /**
+   * Flip Page Default Props
+   */
+  orientation: "horizontal",
+  uncutPages: false,
+  animationDuration: 200,
+  treshold: 10,
+  maxAngle: 45,
+  maxOpacity: 0.4,
+  perspective: 130,
+  pageBackground: "#fff",
+  showHint: false,
+  showSwipeHint: false,
+  showTouchHint: false,
+  flipOnTouch: false,
+  loopForever: true,
+  disableSwipe: false,
+  responsive: false,
+  startAt: 0
 };
 
 const sideleftFrameStyle: React.CSSProperties = {
