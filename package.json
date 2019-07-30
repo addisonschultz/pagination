@@ -1,0 +1,21 @@
+{
+	"main": "dist/index.js",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/react": "^16.8"
+	},
+	"peerDependencies": {
+		"framer": "^1",
+		"react": "^16.8"
+	},
+	"framer": {
+		"id": "ee278683-0b1e-4aae-ae1f-715cf345b6a6",
+		"displayName": "Pagination"
+	},
+	"author": "Addison Schultz",
+	"dependencies": {
+		"react": "^16.8.6"
+	},
+	"name": "@framer/addison.pagination",
+	"version": "1.12.0"
+}
