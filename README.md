@@ -66,7 +66,10 @@ There are two types of Pagination encapsuled in this component:
 | v1.11.0 | Added tons of new props, and added some custom transitions.              |
 | v1.12.0 | Updated Readme                                                           |
 | v1.13.0 | Add support for `react-flip-page`                                        |
+| v1.14.0 | Add custom transition `fade`                                             |
 
 \*This component was a React Class component before Framer X21. Current version is a refactored functional component, but the original code for the now depreciated Class Pagination Component can still be found in this package when looking at the code if you'd like to explore the differences between Class and Functional React Components.
+
+\*Thanks also to [@derlukasg](https://twitter.com/derlukasg) for also contributing to the custom fade transition!
 
 Feel free to reach out to me [@addisonschultz](https://twitter.com/AddisonSchultz) with any questions, or feel free to submit a [pull request](https://github.com/addisonschultz/pagination).
