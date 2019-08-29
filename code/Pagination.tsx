@@ -107,6 +107,9 @@ export function Pagination(props: Props) {
   if (props.custom === "Custom2") {
     customTransition = { ...Custom2() };
   }
+  if (props.custom === "Custom3") {
+    customTransition = { ...Custom3() };
+  }
 
   if (props.toggle) {
     return (
@@ -275,8 +278,8 @@ addPropertyControls(Pagination, {
   custom: {
     type: ControlType.Enum,
     title: "Custom Effect",
-    options: ["Custom1", "Custom2"],
-    optionTitles: ["Shrink", "Rotate"],
+    options: ["Custom1", "Custom2", "Custom3"],
+    optionTitles: ["Shrink", "Rotate", "Fade"],
     hidden(props) {
       return props.transition === true;
     }
@@ -618,6 +621,16 @@ function Custom2(): Override {
     effect(info) {
       return {
         rotate: Math.abs(info.normalizedOffset) * 360
+      };
+    }
+  };
+}
+function Custom3(): Override {
+  return {
+    effect(info) {
+      return {
+        opacity: 1 - Math.abs(info.normalizedOffset),
+        x: -info.offset
       };
     }
   };
