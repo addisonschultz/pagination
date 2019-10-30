@@ -21,6 +21,7 @@ There are two types of Pagination encapsuled in this component:
 - **Custom Effect** — Custom Page Effect on Change. Set to `shrink` by default when enabled.
 - **Gap** — Sets the gap between the connected content. Set to `10` by default.
 - **Overflow** — If the connected content can be seen outside of the component itself. Set to `hidden` by default.
+- **Background Color** — The background color that shows when a gap is set on the Page component. Set to `#000000` by default.
 - **Draggable** — If the Page can be changed by dragging. Set to `false` by default.
 - **Tap Area** — Where the tappable area is located. Toggle between Corners and Sides. Set to `corners` by default.
 - **Carousel** — Whether or not the Page will jump to the beginning when it reaches the end or vice versa. Set to `on` by default.
@@ -67,6 +68,7 @@ There are two types of Pagination encapsuled in this component:
 | v1.12.0 | Updated Readme                                                           |
 | v1.13.0 | Add support for `react-flip-page`                                        |
 | v1.14.0 | Add custom transition `fade`                                             |
+| v1.15.0 | Add support for custom `background-color` on `Page`                      |
 
 \*This component was a React Class component before Framer X21. Current version is a refactored functional component, but the original code for the now depreciated Class Pagination Component can still be found in this package when looking at the code if you'd like to explore the differences between Class and Functional React components.
 
