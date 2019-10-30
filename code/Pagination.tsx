@@ -25,6 +25,7 @@ export interface Props {
   rightIcon: any;
   gap: number;
   overflow: any;
+  pageBackgroundColor: string;
   enum: any;
   custom: any;
   icons: boolean;
@@ -149,7 +150,7 @@ export function Pagination(props: Props) {
         height={height}
         gap={props.gap}
         padding={0}
-        background={"#000000"}
+        background={props.pageBackgroundColor}
         momentum={false}
         overflow={props.overflow}
         defaultEffect={props.enum}
@@ -303,6 +304,10 @@ addPropertyControls(Pagination, {
     hidden(props) {
       return props.toggle === true;
     }
+  },
+  pageBackgroundColor: {
+    type: ControlType.Color,
+    title: "Background Color"
   },
   dragEnabled: {
     type: ControlType.Boolean,
@@ -544,6 +549,7 @@ Pagination.defaultProps = {
   rightIcon: null,
   gap: 10,
   overflow: "hidden",
+  pageBackgroundColor: "#000000",
   icons: true,
   tapArea: true,
   carousel: true,
