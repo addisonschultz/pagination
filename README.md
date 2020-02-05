@@ -46,7 +46,7 @@ There are two types of Pagination encapsuled in this component:
 - **Flip on Touch** - Whether or not you can touch to change pages. Set to `false` by default.
 - **Loop** - If the carousel will restart when it reaches the end. Set to `true` by default.
 - **Disable Swipe** - Whether or not swipe gestures are recognized. Set to `false` by default.
-- **Responsive** - If the connected content will be able to be seen in the Pagination Component. Connected content must be at least the same dimensions as the Pagination Component. Set to `false` by default.
+- **Responsive** - If the connected content will be able to be seen in the Pagination Component. Connected content must be at least the same dimensions as the Pagination Component. Set to `true` by default.
 - **Start Page** - Index for the pages to start on. Set to `0` by default.
 
 ### Versions
@@ -69,6 +69,7 @@ There are two types of Pagination encapsuled in this component:
 | v1.13.0 | Add support for `react-flip-page`                                        |
 | v1.14.0 | Add custom transition `fade`                                             |
 | v1.15.0 | Add support for custom `background-color` on `Page`                      |
+| v1.16.0 | Minor UX updates                                                         |
 
 \*This component was a React Class component before Framer X21. Current version is a refactored functional component, but the original code for the now depreciated Class Pagination Component can still be found in this package when looking at the code if you'd like to explore the differences between Class and Functional React components.
 

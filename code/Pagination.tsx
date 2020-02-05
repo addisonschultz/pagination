@@ -573,7 +573,7 @@ Pagination.defaultProps = {
   flipOnTouch: false,
   loopForever: true,
   disableSwipe: false,
-  responsive: false,
+  responsive: true,
   startAt: 0
 };
 
