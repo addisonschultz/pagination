@@ -18,5 +18,5 @@
 		"react-flip-page": "^1.5.7"
 	},
 	"name": "@framer/addison.pagination",
-	"version": "1.16.0"
+	"version": "1.17.0"
 }

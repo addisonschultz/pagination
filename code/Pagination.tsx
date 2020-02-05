@@ -4,7 +4,8 @@ import {
   Page,
   ControlType,
   addPropertyControls,
-  Override
+  Override,
+  transform
 } from "framer";
 import FlipPage from "react-flip-page";
 
@@ -110,6 +111,9 @@ export function Pagination(props: Props) {
   }
   if (props.custom === "Custom3") {
     customTransition = { ...Custom3() };
+  }
+  if (props.custom === "Custom4") {
+    customTransition = { ...Custom4() };
   }
 
   if (props.toggle) {
@@ -279,8 +283,8 @@ addPropertyControls(Pagination, {
   custom: {
     type: ControlType.Enum,
     title: "Custom Effect",
-    options: ["Custom1", "Custom2", "Custom3"],
-    optionTitles: ["Shrink", "Rotate", "Fade"],
+    options: ["Custom1", "Custom2", "Custom3", "Custom4"],
+    optionTitles: ["Shrink", "Rotate", "Fade", "Lineup"],
     hidden(props) {
       return props.transition === true;
     }
@@ -637,6 +641,20 @@ function Custom3(): Override {
       return {
         opacity: 1 - Math.abs(info.normalizedOffset),
         x: -info.offset
+      };
+    }
+  };
+}
+function Custom4(): Override {
+  return {
+    effect(info) {
+      const { offset, normalizedOffset, index } = info;
+      return {
+        x: -offset + normalizedOffset * 48,
+        y: normalizedOffset * 16,
+        z: -index,
+        scale: transform(normalizedOffset, [0, 1], [1, 0.9], { clamp: false }),
+        opacity: normalizedOffset + 1
       };
     }
   };

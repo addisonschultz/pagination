@@ -70,9 +70,11 @@ There are two types of Pagination encapsuled in this component:
 | v1.14.0 | Add custom transition `fade`                                             |
 | v1.15.0 | Add support for custom `background-color` on `Page`                      |
 | v1.16.0 | Minor UX updates                                                         |
+| v1.17.0 | Add custom transition `lineup`                                           |
 
 \*This component was a React Class component before Framer X21. Current version is a refactored functional component, but the original code for the now depreciated Class Pagination Component can still be found in this package when looking at the code if you'd like to explore the differences between Class and Functional React components.
 
-\*Thanks also to [@derlukasg](https://twitter.com/derlukasg) for also contributing to the custom fade transition!
+\*Thanks to [@derlukasg](https://twitter.com/derlukasg) for also contributing to the custom fade transition!
+\*Thanks to [@steveruizok](https://twitter.com/steveruizok) for also contributing to the [custom lineup transition](https://twitter.com/steveruizok/status/1225043878467842048)!
 
 Feel free to reach out to me [@addisonschultz](https://twitter.com/AddisonSchultz) with any questions, or feel free to submit a [pull request](https://github.com/addisonschultz/pagination).
