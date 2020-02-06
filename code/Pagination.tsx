@@ -117,6 +117,7 @@ export function Pagination(props: Props) {
   }
 
   if (props.toggle) {
+    let flipBorderStyle = props.children[0].props.style.borderRadius;
     return (
       <FlipPage
         height={props.responsive ? null : 812}
@@ -140,6 +141,10 @@ export function Pagination(props: Props) {
         disableSwipe={props.disableSwipe}
         responsive={props.responsive}
         startAt={props.startAt}
+        style={{
+          borderRadius: flipBorderStyle,
+          overflow: "hidden"
+        }}
       >
         {props.children}
       </FlipPage>
@@ -311,7 +316,10 @@ addPropertyControls(Pagination, {
   },
   pageBackgroundColor: {
     type: ControlType.Color,
-    title: "Background Color"
+    title: "Background Color",
+    hidden(props) {
+      return props.toggle === true;
+    }
   },
   dragEnabled: {
     type: ControlType.Boolean,
@@ -570,7 +578,7 @@ Pagination.defaultProps = {
   maxAngle: 45,
   maxOpacity: 0.4,
   perspective: 130,
-  pageBackground: "#fff",
+  pageBackground: "rgba(0, 0, 0, 0)",
   showHint: false,
   showSwipeHint: false,
   showTouchHint: false,

@@ -71,6 +71,7 @@ There are two types of Pagination encapsuled in this component:
 | v1.15.0 | Add support for custom `background-color` on `Page`                      |
 | v1.16.0 | Minor UX updates                                                         |
 | v1.17.0 | Add custom transition `lineup`                                           |
+| v1.18.0 | Fix clipped `borderRadius` on FlipPage                                   |
 
 \*This component was a React Class component before Framer X21. Current version is a refactored functional component, but the original code for the now depreciated Class Pagination Component can still be found in this package when looking at the code if you'd like to explore the differences between Class and Functional React components.
 
