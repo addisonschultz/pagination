@@ -197,26 +197,26 @@ export function Pagination(props: Props) {
             <path
               d="M 2 22 L 42 22"
               fill="transparent"
-              stroke-width="3"
+              strokeWidth="3"
               stroke={props.color}
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M 16 37 L 2 22"
               fill="transparent"
-              stroke-width="3"
+              strokeWidth="3"
               stroke={props.color}
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M 16 6.5 L 2 21.5"
               fill="transparent"
-              stroke-width="3"
+              strokeWidth="3"
               stroke={props.color}
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         )}
@@ -235,18 +235,18 @@ export function Pagination(props: Props) {
             <path
               d="M 2 22 L 42 22 L 28 7"
               fill="transparent"
-              stroke-width="3"
+              strokeWidth="3"
               stroke={props.color}
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M 28 37.5 L 42 22"
               fill="transparent"
-              stroke-width="3"
+              strokeWidth="3"
               stroke={props.color}
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         )}
@@ -574,7 +574,7 @@ Pagination.defaultProps = {
   rightIcon: null,
   gap: 10,
   overflow: "hidden",
-  pageBackgroundColor: "#000000",
+  pageBackgroundColor: "rgba(0, 0, 0, 0)",
   icons: true,
   tapArea: true,
   carousel: true,

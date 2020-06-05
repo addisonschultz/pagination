@@ -14,6 +14,7 @@
 	},
 	"author": "Addison Schultz",
 	"dependencies": {
+		"@framer/framer.default": "^1.71.0",
 		"react": "^16.8.6",
 		"react-flip-page": "^1.5.7"
 	},
