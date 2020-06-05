@@ -16,7 +16,7 @@ There are two types of Pagination encapsuled in this component:
 
 **Page Properties**
 
-- **Transition** — Default or Custom Page Transition. Set to `defualt` by default.
+- **Transition** — Default or Custom Page Transition. Set to `default` by default.
 - **Effect** — Page Effect on Change. Set to `none` by default when enabled.
 - **Custom Effect** — Custom Page Effect on Change. Set to `shrink` by default when enabled.
 - **Gap** — Sets the gap between the connected content. Set to `10` by default.
@@ -35,7 +35,7 @@ There are two types of Pagination encapsuled in this component:
 - **Orientation** - Direction the Flip Page will turn. Set to `vertical` by default.
 - **Uncut Pages** - Whether or not the content will overflow the Flip Page. `true` returns a more "bookish" effect. Set to `false` by default.
 - **Animation Duration** - Duration in ms for the flip animation. Set to `200` by default.
-- **Treshold** - Distance in px to swipe before the gesture is activated. Set to `10` by default.
+- **Threshold** - Distance in px to swipe before the gesture is activated. Set to `10` by default.
 - **Max Angle** - Angle of the page when there's nothing to display before/after. Set to `45` by default.
 - **Mask Opacity** - Opacity of the masks that covers the underneath content. Set to `0.4` by default.
 - **Perspective** - Perspective value of the page fold effect. The bigger, the less noticeable. Set to `130` by default.
@@ -72,10 +72,16 @@ There are two types of Pagination encapsuled in this component:
 | v1.16.0 | Minor UX updates                                                         |
 | v1.17.0 | Add custom transition `lineup`                                           |
 | v1.18.0 | Fix clipped `borderRadius` on FlipPage                                   |
+| v1.19.0 | Optimize for Web/Desktop, fix broken null states                         |
+
+\*Known Bugs:
+
+- Using the `FlipPage` on mobile devices shows a black square on top. An issue has been filed with package creator.
 
 \*This component was a React Class component before Framer X21. Current version is a refactored functional component, but the original code for the now depreciated Class Pagination Component can still be found in this package when looking at the code if you'd like to explore the differences between Class and Functional React components.
 
 \*Thanks to [@derlukasg](https://twitter.com/derlukasg) for also contributing to the custom fade transition!
+
 \*Thanks to [@steveruizok](https://twitter.com/steveruizok) for also contributing to the [custom lineup transition](https://twitter.com/steveruizok/status/1225043878467842048)!
 
 Feel free to reach out to me [@addisonschultz](https://twitter.com/AddisonSchultz) with any questions, or feel free to submit a [pull request](https://github.com/addisonschultz/pagination).

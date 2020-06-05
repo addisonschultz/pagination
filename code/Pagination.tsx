@@ -128,7 +128,12 @@ export function Pagination(props: Props) {
 
   // Render Flip Page
   if (props.toggle) {
-    let flipBorderStyle = props.children[0].props.style.borderRadius;
+    let flipBorderStyle = 0;
+
+    React.Children.count(props.children) >= 1
+      ? (flipBorderStyle = props.children[0].props.style.borderRadius)
+      : null;
+
     return (
       <FlipPage
         height={props.responsive ? null : 812}
