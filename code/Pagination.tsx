@@ -5,7 +5,7 @@ import {
   ControlType,
   addPropertyControls,
   Override,
-  transform
+  transform,
 } from "framer";
 import FlipPage from "react-flip-page";
 
@@ -59,6 +59,7 @@ export interface Props {
   startAt: number;
 }
 
+// Define types for Page effects
 export class PageEffect {
   static None = "none";
   static CoverFlow = "coverflow";
@@ -70,8 +71,15 @@ export class PageEffect {
 export function Pagination(props: Props) {
   const { width, height } = props;
 
+  // Hold state of current page
   const [current, setCurrent] = React.useState(0);
 
+  // Change page when props are chaged
+  React.useEffect(() => {
+    setCurrent(props.startAt);
+  }, [props.startAt]);
+
+  // Tap Forwards Function
   function tapForwards(event, info) {
     if (props.carousel === false && current >= props.children.length - 1) {
       return;
@@ -87,6 +95,7 @@ export function Pagination(props: Props) {
     }
   }
 
+  // Tap Backward Function
   function tapBackwards(event, info) {
     if (props.carousel === false && current <= 0) {
       return;
@@ -102,6 +111,7 @@ export function Pagination(props: Props) {
     }
   }
 
+  // Add Custom Transtions as Props
   let customTransition;
   if (props.custom === "Custom1") {
     customTransition = { ...Custom1() };
@@ -116,6 +126,7 @@ export function Pagination(props: Props) {
     customTransition = { ...Custom4() };
   }
 
+  // Render Flip Page
   if (props.toggle) {
     let flipBorderStyle = props.children[0].props.style.borderRadius;
     return (
@@ -143,13 +154,14 @@ export function Pagination(props: Props) {
         startAt={props.startAt}
         style={{
           borderRadius: flipBorderStyle,
-          overflow: "hidden"
+          overflow: "hidden",
         }}
       >
         {props.children}
       </FlipPage>
     );
   }
+  // Render Page
   return (
     <div>
       <Page
@@ -243,20 +255,21 @@ export function Pagination(props: Props) {
   );
 }
 
+// @ts-ignore
 addPropertyControls(Pagination, {
   // Pagination Property Controls
   children: {
     type: ControlType.Array,
     title: "Pages",
     propertyControl: {
-      type: ControlType.ComponentInstance
-    }
+      type: ControlType.ComponentInstance,
+    },
   },
   toggle: {
     type: ControlType.Boolean,
     title: "Page Type",
     enabledTitle: "Flip",
-    disabledTitle: "Page"
+    disabledTitle: "Page",
   },
   /**
    * Native Page Property Controls
@@ -268,7 +281,7 @@ addPropertyControls(Pagination, {
     disabledTitle: "Custom",
     hidden(props) {
       return props.toggle === true;
-    }
+    },
   },
   enum: {
     type: ControlType.Enum,
@@ -278,12 +291,12 @@ addPropertyControls(Pagination, {
       PageEffect.CoverFlow,
       PageEffect.Cube,
       PageEffect.Pile,
-      PageEffect.Wheel
+      PageEffect.Wheel,
     ],
     optionTitles: ["None", "Cover Flow", "Cube", "Pile", "Wheel"],
     hidden(props) {
       return props.transition === false || props.toggle === true;
-    }
+    },
   },
   custom: {
     type: ControlType.Enum,
@@ -292,7 +305,7 @@ addPropertyControls(Pagination, {
     optionTitles: ["Shrink", "Rotate", "Fade", "Lineup"],
     hidden(props) {
       return props.transition === true;
-    }
+    },
   },
   gap: {
     type: ControlType.Number,
@@ -303,7 +316,7 @@ addPropertyControls(Pagination, {
     step: 1,
     hidden(props) {
       return props.toggle === true;
-    }
+    },
   },
   overflow: {
     type: ControlType.Enum,
@@ -312,14 +325,14 @@ addPropertyControls(Pagination, {
     optionTitles: ["Hidden", "Visible"],
     hidden(props) {
       return props.toggle === true;
-    }
+    },
   },
   pageBackgroundColor: {
     type: ControlType.Color,
     title: "Background Color",
     hidden(props) {
       return props.toggle === true;
-    }
+    },
   },
   dragEnabled: {
     type: ControlType.Boolean,
@@ -328,7 +341,7 @@ addPropertyControls(Pagination, {
     disabledTitle: "False",
     hidden(props) {
       return props.toggle === true;
-    }
+    },
   },
   tapArea: {
     type: ControlType.Boolean,
@@ -337,7 +350,7 @@ addPropertyControls(Pagination, {
     disabledTitle: "Sides",
     hidden(props) {
       return props.toggle === true;
-    }
+    },
   },
   carousel: {
     type: ControlType.Boolean,
@@ -346,7 +359,7 @@ addPropertyControls(Pagination, {
     disabledTitle: "Off",
     hidden(props) {
       return props.toggle === true;
-    }
+    },
   },
   icons: {
     type: ControlType.Boolean,
@@ -355,7 +368,7 @@ addPropertyControls(Pagination, {
     disabledTitle: "Hide",
     hidden(props) {
       return props.tapArea === false || props.toggle === true;
-    }
+    },
   },
   color: {
     type: ControlType.Color,
@@ -367,7 +380,7 @@ addPropertyControls(Pagination, {
         props.toggle === true ||
         (props.rightIcon.includes(".svg") && props.leftIcon.includes(".svg"))
       );
-    }
+    },
   },
   leftIcon: {
     type: ControlType.File,
@@ -379,7 +392,7 @@ addPropertyControls(Pagination, {
         props.tapArea === false ||
         props.toggle === true
       );
-    }
+    },
   },
   rightIcon: {
     type: ControlType.File,
@@ -391,7 +404,7 @@ addPropertyControls(Pagination, {
         props.tapArea === false ||
         props.toggle === true
       );
-    }
+    },
   },
   /**
    * FlipPage Property Controls
@@ -403,7 +416,7 @@ addPropertyControls(Pagination, {
     optionTitles: ["Vertical", "Horizontal"],
     hidden(props) {
       return props.toggle === false;
-    }
+    },
   },
   uncutPages: {
     type: ControlType.Boolean,
@@ -412,7 +425,7 @@ addPropertyControls(Pagination, {
     disabledTitle: "False",
     hidden(props) {
       return props.toggle === false;
-    }
+    },
   },
   animationDuration: {
     type: ControlType.Number,
@@ -422,7 +435,7 @@ addPropertyControls(Pagination, {
     step: 1,
     hidden(props) {
       return props.toggle === false;
-    }
+    },
   },
   treshold: {
     type: ControlType.Number,
@@ -432,7 +445,7 @@ addPropertyControls(Pagination, {
     step: 1,
     hidden(props) {
       return props.toggle === false;
-    }
+    },
   },
   maxAngle: {
     type: ControlType.Number,
@@ -442,7 +455,7 @@ addPropertyControls(Pagination, {
     step: 1,
     hidden(props) {
       return props.toggle === false;
-    }
+    },
   },
   maxOpacity: {
     type: ControlType.Number,
@@ -452,7 +465,7 @@ addPropertyControls(Pagination, {
     step: 0.1,
     hidden(props) {
       return props.toggle === false;
-    }
+    },
   },
   perspective: {
     type: ControlType.Number,
@@ -462,14 +475,14 @@ addPropertyControls(Pagination, {
     step: 1,
     hidden(props) {
       return props.toggle === false;
-    }
+    },
   },
   pageBackground: {
     type: ControlType.Color,
     title: "Background Color",
     hidden(props) {
       return props.toggle === false;
-    }
+    },
   },
   showHint: {
     type: ControlType.Boolean,
@@ -478,7 +491,7 @@ addPropertyControls(Pagination, {
     disabledTitle: "False",
     hidden(props) {
       return props.toggle === false;
-    }
+    },
   },
   showSwipeHint: {
     type: ControlType.Boolean,
@@ -487,7 +500,7 @@ addPropertyControls(Pagination, {
     disabledTitle: "False",
     hidden(props) {
       return props.toggle === false;
-    }
+    },
   },
   showTouchHint: {
     type: ControlType.Boolean,
@@ -496,7 +509,7 @@ addPropertyControls(Pagination, {
     disabledTitle: "False",
     hidden(props) {
       return props.toggle === false;
-    }
+    },
   },
   flipOnTouch: {
     type: ControlType.Boolean,
@@ -505,7 +518,7 @@ addPropertyControls(Pagination, {
     disabledTitle: "False",
     hidden(props) {
       return props.toggle === false;
-    }
+    },
   },
   loopForever: {
     type: ControlType.Boolean,
@@ -514,7 +527,7 @@ addPropertyControls(Pagination, {
     disabledTitle: "False",
     hidden(props) {
       return props.toggle === false;
-    }
+    },
   },
   disableSwipe: {
     type: ControlType.Boolean,
@@ -523,7 +536,7 @@ addPropertyControls(Pagination, {
     disabledTitle: "False",
     hidden(props) {
       return props.toggle === false;
-    }
+    },
   },
   responsive: {
     type: ControlType.Boolean,
@@ -532,7 +545,7 @@ addPropertyControls(Pagination, {
     disabledTitle: "False",
     hidden(props) {
       return props.toggle === false;
-    }
+    },
   },
   startAt: {
     type: ControlType.Number,
@@ -540,8 +553,8 @@ addPropertyControls(Pagination, {
     displayStepper: true,
     hidden(props) {
       return props.toggle === false;
-    }
-  }
+    },
+  },
 });
 
 Pagination.defaultProps = {
@@ -586,7 +599,7 @@ Pagination.defaultProps = {
   loopForever: true,
   disableSwipe: false,
   responsive: true,
-  startAt: 0
+  startAt: 0,
 };
 
 const sideleftFrameStyle: React.CSSProperties = {
@@ -595,7 +608,7 @@ const sideleftFrameStyle: React.CSSProperties = {
   position: "absolute",
   backgroundColor: " hsla(0, 0%, 100%, 0)",
   bottom: 0,
-  left: 0
+  left: 0,
 };
 const siderightFrameStyle: React.CSSProperties = {
   width: 100,
@@ -603,7 +616,7 @@ const siderightFrameStyle: React.CSSProperties = {
   position: "absolute",
   backgroundColor: " hsla(0, 0%, 100%, 0)",
   bottom: 0,
-  right: 0
+  right: 0,
 };
 const cornerbackFrameStyle: React.CSSProperties = {
   width: 44,
@@ -611,7 +624,7 @@ const cornerbackFrameStyle: React.CSSProperties = {
   position: "absolute",
   backgroundColor: " hsla(0, 0%, 100%, 0)",
   bottom: 20,
-  left: 20
+  left: 20,
 };
 
 const cornerforwardFrameStyle: React.CSSProperties = {
@@ -621,26 +634,27 @@ const cornerforwardFrameStyle: React.CSSProperties = {
   position: "absolute",
   backgroundColor: " hsla(0, 0%, 100%, 0)",
   bottom: 20,
-  right: 20
+  right: 20,
 };
 
+// Custom transtions
 function Custom1(): Override {
   return {
     effect(info) {
       return {
         rotateY: info.normalizedOffset * -20,
-        scale: 1 - Math.abs(info.normalizedOffset)
+        scale: 1 - Math.abs(info.normalizedOffset),
       };
-    }
+    },
   };
 }
 function Custom2(): Override {
   return {
     effect(info) {
       return {
-        rotate: Math.abs(info.normalizedOffset) * 360
+        rotate: Math.abs(info.normalizedOffset) * 360,
       };
-    }
+    },
   };
 }
 function Custom3(): Override {
@@ -648,9 +662,9 @@ function Custom3(): Override {
     effect(info) {
       return {
         opacity: 1 - Math.abs(info.normalizedOffset),
-        x: -info.offset
+        x: -info.offset,
       };
-    }
+    },
   };
 }
 function Custom4(): Override {
@@ -662,8 +676,8 @@ function Custom4(): Override {
         y: normalizedOffset * 16,
         z: -index,
         scale: transform(normalizedOffset, [0, 1], [1, 0.9], { clamp: false }),
-        opacity: normalizedOffset + 1
+        opacity: normalizedOffset + 1,
       };
-    }
+    },
   };
 }
