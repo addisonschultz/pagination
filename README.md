@@ -73,10 +73,7 @@ There are two types of Pagination encapsuled in this component:
 | v1.17.0 | Add custom transition `lineup`                                           |
 | v1.18.0 | Fix clipped `borderRadius` on FlipPage                                   |
 | v1.19.0 | Optimize for Web/Desktop, fix broken null states                         |
-
-\*Known Bugs:
-
-- Using the `FlipPage` on mobile devices shows a black square on top. An issue has been filed with package creator.
+| v1.20.0 | Bump `react-flip-page` to `^1.6.2` to fix clipped edges                  |
 
 \*This component was a React Class component before Framer X21. Current version is a refactored functional component, but the original code for the now depreciated Class Pagination Component can still be found in this package when looking at the code if you'd like to explore the differences between Class and Functional React components.
 

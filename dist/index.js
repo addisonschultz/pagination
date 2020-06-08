@@ -1919,7 +1919,7 @@ exports.__framer__ = packageInfo
 /*! exports provided: main, license, devDependencies, peerDependencies, framer, author, dependencies, name, version, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"main\":\"dist/index.js\",\"license\":\"MIT\",\"devDependencies\":{\"@types/react\":\"^16.8\"},\"peerDependencies\":{\"framer\":\"^1\",\"react\":\"^16.8\"},\"framer\":{\"id\":\"ee278683-0b1e-4aae-ae1f-715cf345b6a6\",\"displayName\":\"Pagination\"},\"author\":\"Addison Schultz\",\"dependencies\":{\"@framer/framer.default\":\"^1.71.0\",\"react\":\"^16.8.6\",\"react-flip-page\":\"^1.5.7\"},\"name\":\"@framer/addison.pagination\",\"version\":\"1.18.0\"}");
+module.exports = JSON.parse("{\"main\":\"dist/index.js\",\"license\":\"MIT\",\"devDependencies\":{\"@types/react\":\"^16.8\"},\"peerDependencies\":{\"framer\":\"^1\",\"react\":\"^16.8\"},\"framer\":{\"id\":\"ee278683-0b1e-4aae-ae1f-715cf345b6a6\",\"displayName\":\"Pagination\"},\"author\":\"Addison Schultz\",\"dependencies\":{\"@framer/framer.default\":\"^1.71.0\",\"react\":\"^16.8.6\",\"react-flip-page\":\"^1.6.2\"},\"name\":\"@framer/addison.pagination\",\"version\":\"1.19.0\"}");
 
 /***/ }),
 
